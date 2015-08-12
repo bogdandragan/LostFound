@@ -5,7 +5,7 @@ import play.api.libs.iteratee.{Concurrent, Iteratee}
 import play.api.libs.json.{JsValue, Json}
 import play.api.mvc._
 
-object Application extends Controller {
+class Application extends Controller {
 
   def index = WebSocket.using[JsValue] { implicit request =>
 

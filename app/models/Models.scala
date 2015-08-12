@@ -1,5 +1,7 @@
 package models
 
+import play.api.libs.json.Json
+
 // AUTO-GENERATED Slick data model
 /** Stand-alone Slick data model for immediate use */
 object Tables extends {
@@ -24,6 +26,11 @@ trait Tables {
     *  @param password Database column password SqlType(VARCHAR), Length(50,true)
     *  @param sessionId Database column session_id SqlType(VARCHAR), Length(500,true), Default(None) */
   case class UsersRow(id: Int, email: String, password: String, sessionId: Option[String] = None)
+
+    //JSON read/write
+    implicit val userFormat = Json.format[UsersRow]
+
+//  implicit val userWrites = Json.writes[UsersRow]
   /** GetResult implicit for fetching UsersRow objects using plain SQL queries */
   implicit def GetResultUsersRow(implicit e0: GR[Int], e1: GR[String], e2: GR[Option[String]]): GR[UsersRow] = GR{
     prs => import prs._
@@ -46,4 +53,6 @@ trait Tables {
   }
   /** Collection-like TableQuery object for table Users */
   lazy val Users = new TableQuery(tag => new Users(tag))
+
+
 }
