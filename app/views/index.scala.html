@@ -15,4 +15,23 @@
         </form>
     </div>
 
+    <script>
+        $( "#login" ).submit(function(event) {
+    		event.preventDefault();
+    		var request = {"action":"login", "params":{"email":"bogdandragan", "password":"123456"}};
+
+    		$.ajax({
+    			type: "POST",
+    			url: "@routes.Account.doSignin()",
+    			data: JSON.stringify(request),
+    			contentType: "application/json; charset=utf-8",
+    			success: function(data){
+    				console.log(data);
+
+    			}
+			});
+		});
+
+    </script>
+
 }

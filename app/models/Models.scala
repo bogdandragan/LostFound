@@ -28,7 +28,7 @@ trait Tables {
   case class UsersRow(id: Int, email: String, password: String, sessionId: Option[String] = None)
 
     //JSON read/write
-    implicit val userFormat = Json.format[UsersRow]
+    implicit val userFormat = Json.writes[UsersRow]
 
 //  implicit val userWrites = Json.writes[UsersRow]
   /** GetResult implicit for fetching UsersRow objects using plain SQL queries */
@@ -50,9 +50,15 @@ trait Tables {
     val password: Rep[String] = column[String]("password", O.Length(50,varying=true))
     /** Database column session_id SqlType(VARCHAR), Length(500,true), Default(None) */
     val sessionId: Rep[Option[String]] = column[Option[String]]("session_id", O.Length(500,varying=true), O.Default(None))
+
+    def byId(id:Rep[Int]) = Users.filter(_.id === id)
+    def findById = Compiled(byId _)
   }
   /** Collection-like TableQuery object for table Users */
   lazy val Users = new TableQuery(tag => new Users(tag))
+
+
+
 
 
 }
