@@ -1,15 +1,20 @@
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
-
+GET         /ws                          @controllers.Application.index
 # Home page
-GET         /                      @controllers.Application.index
-#GET         /account              @controllers.Account.index
-#GET         /account/register     @controllers.Account.register
-GET         /account/signin        @controllers.Account.signin
-POST        /account/signin        @controllers.Account.doSignin
+GET         /                            @controllers.Home.index
+
+#Account
+GET         /account                     @controllers.Account.index
+GET         /account/register            @controllers.Account.register
+GET         /account/signin              @controllers.Account.signin
+POST        /account/signin              @controllers.Account.doSignin
+POST        /account/checkSession        @controllers.Account.checkSession
+
+POST        /home/saveImage             @controllers.Home.saveImage
 #GET         /account              @controllers.Account.index
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file          controllers.Assets.at(path="/public", file)
+GET         /assets/*file                controllers.Assets.at(path="/public", file)
 
     
