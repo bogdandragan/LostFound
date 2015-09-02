@@ -1,0 +1,39 @@
+@main("Восстановление пароля") {
+
+    <div class="container" style="margin-top: 70px;">
+        <div class="well col-md-4">
+            <form id="forgot">
+                <fieldset>
+                    <legend>Восстановление пароля</legend>
+                    <div class="form-group">
+                        <label for="email">Email-адрес</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email-адрес">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $( "#forgot" ).submit(function(event) {
+    		event.preventDefault();
+    		var request = {"action":"forgot", "params":{"email":$("#email").val()}};
+
+    		$.ajax({
+    			type: "POST",
+    			url: "@routes.Account.doForgot()",
+    			data: JSON.stringify(request),
+    			contentType: "application/json; charset=utf-8",
+    			success: function(data){
+
+    				console.log(data);
+
+    			}
+			});
+		});
+    </script>
+
+}

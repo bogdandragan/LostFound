@@ -1,35 +1,35 @@
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
-GET         /ws                          @controllers.Application.index
+
 # Home page
-<<<<<<< HEAD
-GET         /                            @controllers.Home.index
+GET         /                                  @controllers.Home.index
 
 #Account
-GET         /account                     @controllers.Account.index
-GET         /account/register            @controllers.Account.register
-GET         /account/signin              @controllers.Account.signin
-POST        /account/signin              @controllers.Account.doSignin
-POST        /account/checkSession        @controllers.Account.checkSession
+GET         /account                           @controllers.Account.index
 
-POST        /home/saveImage             @controllers.Home.saveImage
-#GET         /account              @controllers.Account.index
+GET         /account/register                  @controllers.Account.register
+POST        /account/register                  @controllers.Account.doRegister
+
+GET         /account/register/confirm          @controllers.Account.regConfirm
+POST        /account/register/confirm          @controllers.Account.checkRegistration
+
+GET         /account/signin                    @controllers.Account.signin
+POST        /account/signin                    @controllers.Account.doSignin
+
+GET         /account/signin/forgot             @controllers.Account.forgot
+POST        /account/signin/forgot             @controllers.Account.doForgot
+
+GET         /account/signin/newpassword        @controllers.Account.newPassword
+POST        /account/signin/newpassword        @controllers.Account.doNewPassword
+
+POST        /account/checkSession              @controllers.Account.checkSession
+POST        /account/logout                    @controllers.Account.logout
+
+GET         /announcement/new                  @controllers.Announcement.newAnnouncement
+GET         /announcement/getaddress           @controllers.Announcement.getAddress
+GET         /announcement/getcategories           @controllers.Announcement.getCategories
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                controllers.Assets.at(path="/public", file)
-=======
-GET         /                           @controllers.Home.index
-
-#Account
-GET         /account                    @controllers.Account.index
-GET         /account/register           @controllers.Account.register
-GET         /account/signin             @controllers.Account.signin
-POST        /account/signin             @controllers.Account.doSignin
-POST        /account/checkSession        @controllers.Account.checkSession
-POST        /account/logout             @controllers.Account.logout
-
-# Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file               controllers.Assets.at(path="/public", file)
->>>>>>> 43a0928f51571efa98bfe7a57bf649b7e2481651
+GET         /assets/*file                      controllers.Assets.at(path="/public", file)
 
     

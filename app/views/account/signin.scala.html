@@ -20,20 +20,21 @@
         <div class="well col-md-4" style="margin: 0 auto; float: none;">
             <form id="login">
                 <fieldset>
-                    <legend>Вход</legend>
+                    <legend>Войти</legend>
                     <div class="form-group">
-                        <label for="email" class="control-label">Email</label>
-                        <input type="text" class="form-control" id="email" placeholder="Email">
+                        <input type="email" class="form-control" id="email" placeholder="Email-адрес">
                     </div>
                     <div class="form-group">
-                        <label for="password" class="control-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" placeholder="Пароль">
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%">Войти</button>
                     </div>
-                    <div>
-                        <a href="#">Регистрация</a>
+                    <div style="float: left;">
+                        <a href="/account/signin/forgot">Забыли пароль?</a>
+                    </div>
+                    <div style="float : right;">
+                        <a href="/account/register">Регистрация</a>
                     </div>
                 </fieldset>
             </form>
@@ -44,7 +45,7 @@
     <script>
         $( "#login" ).submit(function(event) {
     		event.preventDefault();
-    		var request = {"action":"login", "params":{"email":"bogdandragan", "password":"123456"}};
+    		var request = {"action":"login", "params":{"email":$("#email").val(), "password":$("#password").val()}};
 
     		$.ajax({
     			type: "POST",

@@ -1,7 +1,4 @@
-package models
-
-import play.api.libs.json.Json
-
+package Gen
 // AUTO-GENERATED Slick data model
 /** Stand-alone Slick data model for immediate use */
 object Tables extends {
@@ -22,13 +19,13 @@ trait Tables {
   def ddl = schema
 
   /** Entity class storing rows of table Categories
-    *  @param id Database column id SqlType(INT), AutoInc, PrimaryKey
-    *  @param name Database column name SqlType(VARCHAR), Length(100,true) */
+   *  @param id Database column id SqlType(INT), AutoInc, PrimaryKey
+   *  @param name Database column name SqlType(VARCHAR), Length(100,true) */
   case class CategoriesRow(id: Int, name: String)
   /** GetResult implicit for fetching CategoriesRow objects using plain SQL queries */
   implicit def GetResultCategoriesRow(implicit e0: GR[Int], e1: GR[String]): GR[CategoriesRow] = GR{
     prs => import prs._
-      CategoriesRow.tupled((<<[Int], <<[String]))
+    CategoriesRow.tupled((<<[Int], <<[String]))
   }
   /** Table description of table categories. Objects of this class serve as prototypes for rows in queries. */
   class Categories(_tableTag: Tag) extends Table[CategoriesRow](_tableTag, "categories") {
@@ -45,15 +42,15 @@ trait Tables {
   lazy val Categories = new TableQuery(tag => new Categories(tag))
 
   /** Entity class storing rows of table Cities
-    *  @param id Database column id SqlType(INT), AutoInc, PrimaryKey
-    *  @param regionId Database column region_id SqlType(INT)
-    *  @param name Database column name SqlType(VARCHAR), Length(50,true)
-    *  @param phoneCode Database column phone_code SqlType(VARCHAR), Length(7,true), Default(None) */
+   *  @param id Database column id SqlType(INT), AutoInc, PrimaryKey
+   *  @param regionId Database column region_id SqlType(INT)
+   *  @param name Database column name SqlType(VARCHAR), Length(50,true)
+   *  @param phoneCode Database column phone_code SqlType(VARCHAR), Length(7,true), Default(None) */
   case class CitiesRow(id: Int, regionId: Int, name: String, phoneCode: Option[String] = None)
   /** GetResult implicit for fetching CitiesRow objects using plain SQL queries */
   implicit def GetResultCitiesRow(implicit e0: GR[Int], e1: GR[String], e2: GR[Option[String]]): GR[CitiesRow] = GR{
     prs => import prs._
-      CitiesRow.tupled((<<[Int], <<[Int], <<[String], <<?[String]))
+    CitiesRow.tupled((<<[Int], <<[Int], <<[String], <<?[String]))
   }
   /** Table description of table cities. Objects of this class serve as prototypes for rows in queries. */
   class Cities(_tableTag: Tag) extends Table[CitiesRow](_tableTag, "cities") {
@@ -77,18 +74,18 @@ trait Tables {
   lazy val Cities = new TableQuery(tag => new Cities(tag))
 
   /** Entity class storing rows of table Found
-    *  @param id Database column id SqlType(INT), AutoInc, PrimaryKey
-    *  @param title Database column title SqlType(VARCHAR), Length(80,true)
-    *  @param categoryId Database column category_id SqlType(INT)
-    *  @param description Database column description SqlType(VARCHAR), Length(1000,true)
-    *  @param cityId Database column city_id SqlType(INT)
-    *  @param contact Database column contact SqlType(VARCHAR), Length(50,true)
-    *  @param email Database column email SqlType(VARCHAR), Length(50,true) */
+   *  @param id Database column id SqlType(INT), AutoInc, PrimaryKey
+   *  @param title Database column title SqlType(VARCHAR), Length(80,true)
+   *  @param categoryId Database column category_id SqlType(INT)
+   *  @param description Database column description SqlType(VARCHAR), Length(1000,true)
+   *  @param cityId Database column city_id SqlType(INT)
+   *  @param contact Database column contact SqlType(VARCHAR), Length(50,true)
+   *  @param email Database column email SqlType(VARCHAR), Length(50,true) */
   case class FoundRow(id: Int, title: String, categoryId: Int, description: String, cityId: Int, contact: String, email: String)
   /** GetResult implicit for fetching FoundRow objects using plain SQL queries */
   implicit def GetResultFoundRow(implicit e0: GR[Int], e1: GR[String]): GR[FoundRow] = GR{
     prs => import prs._
-      FoundRow.tupled((<<[Int], <<[String], <<[Int], <<[String], <<[Int], <<[String], <<[String]))
+    FoundRow.tupled((<<[Int], <<[String], <<[Int], <<[String], <<[Int], <<[String], <<[String]))
   }
   /** Table description of table found. Objects of this class serve as prototypes for rows in queries. */
   class Found(_tableTag: Tag) extends Table[FoundRow](_tableTag, "found") {
@@ -115,18 +112,18 @@ trait Tables {
   lazy val Found = new TableQuery(tag => new Found(tag))
 
   /** Entity class storing rows of table Lost
-    *  @param id Database column id SqlType(INT), AutoInc, PrimaryKey
-    *  @param title Database column title SqlType(VARCHAR), Length(80,true)
-    *  @param categoryId Database column category_id SqlType(INT)
-    *  @param description Database column description SqlType(VARCHAR), Length(1000,true)
-    *  @param cityId Database column city_id SqlType(INT)
-    *  @param contact Database column contact SqlType(VARCHAR), Length(50,true)
-    *  @param email Database column email SqlType(VARCHAR), Length(50,true) */
+   *  @param id Database column id SqlType(INT), AutoInc, PrimaryKey
+   *  @param title Database column title SqlType(VARCHAR), Length(80,true)
+   *  @param categoryId Database column category_id SqlType(INT)
+   *  @param description Database column description SqlType(VARCHAR), Length(1000,true)
+   *  @param cityId Database column city_id SqlType(INT)
+   *  @param contact Database column contact SqlType(VARCHAR), Length(50,true)
+   *  @param email Database column email SqlType(VARCHAR), Length(50,true) */
   case class LostRow(id: Int, title: String, categoryId: Int, description: String, cityId: Int, contact: String, email: String)
   /** GetResult implicit for fetching LostRow objects using plain SQL queries */
   implicit def GetResultLostRow(implicit e0: GR[Int], e1: GR[String]): GR[LostRow] = GR{
     prs => import prs._
-      LostRow.tupled((<<[Int], <<[String], <<[Int], <<[String], <<[Int], <<[String], <<[String]))
+    LostRow.tupled((<<[Int], <<[String], <<[Int], <<[String], <<[Int], <<[String], <<[String]))
   }
   /** Table description of table lost. Objects of this class serve as prototypes for rows in queries. */
   class Lost(_tableTag: Tag) extends Table[LostRow](_tableTag, "lost") {
@@ -153,13 +150,13 @@ trait Tables {
   lazy val Lost = new TableQuery(tag => new Lost(tag))
 
   /** Entity class storing rows of table Regions
-    *  @param id Database column id SqlType(INT), AutoInc, PrimaryKey
-    *  @param name Database column name SqlType(VARCHAR), Length(50,true) */
+   *  @param id Database column id SqlType(INT), AutoInc, PrimaryKey
+   *  @param name Database column name SqlType(VARCHAR), Length(50,true) */
   case class RegionsRow(id: Int, name: String)
   /** GetResult implicit for fetching RegionsRow objects using plain SQL queries */
   implicit def GetResultRegionsRow(implicit e0: GR[Int], e1: GR[String]): GR[RegionsRow] = GR{
     prs => import prs._
-      RegionsRow.tupled((<<[Int], <<[String]))
+    RegionsRow.tupled((<<[Int], <<[String]))
   }
   /** Table description of table regions. Objects of this class serve as prototypes for rows in queries. */
   class Regions(_tableTag: Tag) extends Table[RegionsRow](_tableTag, "regions") {
@@ -176,17 +173,17 @@ trait Tables {
   lazy val Regions = new TableQuery(tag => new Regions(tag))
 
   /** Entity class storing rows of table Users
-    *  @param id Database column id SqlType(INT), AutoInc, PrimaryKey
-    *  @param email Database column email SqlType(VARCHAR), Length(50,true)
-    *  @param password Database column password SqlType(VARCHAR), Length(255,true)
-    *  @param sessionId Database column session_id SqlType(VARCHAR), Length(255,true), Default(None)
-    *  @param newUser Database column new_user SqlType(TINYINT)
-    *  @param newPassword Database column new_password SqlType(VARCHAR), Length(255,true), Default(None) */
+   *  @param id Database column id SqlType(INT), AutoInc, PrimaryKey
+   *  @param email Database column email SqlType(VARCHAR), Length(50,true)
+   *  @param password Database column password SqlType(VARCHAR), Length(255,true)
+   *  @param sessionId Database column session_id SqlType(VARCHAR), Length(255,true), Default(None)
+   *  @param newUser Database column new_user SqlType(TINYINT)
+   *  @param newPassword Database column new_password SqlType(VARCHAR), Length(255,true), Default(None) */
   case class UsersRow(id: Int, email: String, password: String, sessionId: Option[String] = None, newUser: Byte, newPassword: Option[String] = None)
   /** GetResult implicit for fetching UsersRow objects using plain SQL queries */
   implicit def GetResultUsersRow(implicit e0: GR[Int], e1: GR[String], e2: GR[Option[String]], e3: GR[Byte]): GR[UsersRow] = GR{
     prs => import prs._
-      UsersRow.tupled((<<[Int], <<[String], <<[String], <<?[String], <<[Byte], <<?[String]))
+    UsersRow.tupled((<<[Int], <<[String], <<[String], <<?[String], <<[Byte], <<?[String]))
   }
   /** Table description of table users. Objects of this class serve as prototypes for rows in queries. */
   class Users(_tableTag: Tag) extends Table[UsersRow](_tableTag, "users") {
