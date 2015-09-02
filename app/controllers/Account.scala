@@ -33,6 +33,7 @@ class Account extends Controller  with HasDatabaseConfig[JdbcProfile]{
 
     def register = Action{
       Ok(views.html.account.register())
+<<<<<<< HEAD
     }
 
     def checkSession = Action{ implicit request =>
@@ -42,6 +43,26 @@ class Account extends Controller  with HasDatabaseConfig[JdbcProfile]{
         Ok(Json.obj("error"->"invalid"))
       }
     }
+=======
+    }
+
+    def checkSession = Action{ implicit request =>
+      request.session.get("id").map { user =>
+        Ok(Json.obj("error"->""))
+      }.getOrElse {
+        Ok(Json.obj("error"->"invalid"))
+      }
+    }
+
+  def logout = Action { implicit request =>
+    request.session.get("id").map { user =>
+      Ok("Bye").withNewSession
+    }.getOrElse {
+      Ok("")
+    }
+  }
+
+>>>>>>> 43a0928f51571efa98bfe7a57bf649b7e2481651
 
  /* def login = Action.async { implicit rs =>
     //val action: DBIO[Seq[String]] = Users.map(_.email).result
@@ -65,6 +86,7 @@ class Account extends Controller  with HasDatabaseConfig[JdbcProfile]{
   }*/
   def doSignin() = Action.async { implicit request =>
 
+<<<<<<< HEAD
    //request.session.get("id").map { user =>
      val json = request.body.asJson.get
 
@@ -97,6 +119,35 @@ class Account extends Controller  with HasDatabaseConfig[JdbcProfile]{
    //}
 
 
+=======
+   val json = request.body.asJson.get
+
+   val action= (json \ "action").as[String]
+
+   if(action != "login"){
+     //val futureInt = Future { BadRequest }
+     Future.successful(BadRequest)
+    // futureInt.map(i => Ok("Got result: " + i))
+   }
+   else{
+     val params = json \ "params"
+     val email = (params \ "email").as[String]
+     val password = (params \ "password").as[String]
+
+     val q = db.run(Users.filter(f=> f.email === email && f.password === password).result).map(users => users)
+
+      q.map{
+        u =>
+          if(u.nonEmpty) {
+            Ok(Json.obj("error"->"")).withSession("id" -> BCrypt.hashpw(System.currentTimeMillis.toString, BCrypt.gensalt()))
+          }
+          else{
+            Ok(Json.obj("error"->"User not found"))
+          }
+      }
+       //Future.successful(Ok(q.))
+   }
+>>>>>>> 43a0928f51571efa98bfe7a57bf649b7e2481651
   // BadRequest("invalid requeuuuuust")
    //insert
    /*val user = new UsersRow(0,"de","dede",Some("e3ed33333333"))

@@ -1,5 +1,6 @@
 package controllers
 
+<<<<<<< HEAD
 import java.nio.file._
 
 import org.apache.commons.codec.binary.Base64
@@ -41,3 +42,21 @@ class Home extends Controller  with HasDatabaseConfig[JdbcProfile]{
     Future.successful(Ok(base64))
   }
 }
+=======
+import play.api.Play
+import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfig}
+import play.api.mvc.{Action, Controller}
+import slick.driver.{JdbcProfile, JdbcDriver}
+import scala.concurrent.ExecutionContext.Implicits.global
+
+class Home extends Controller with HasDatabaseConfig[JdbcProfile]{
+  val dbConfig = DatabaseConfigProvider.get[JdbcProfile](Play.current)
+
+  def index = Action{
+    Ok(views.html.index())
+  }
+
+
+
+}
+>>>>>>> 43a0928f51571efa98bfe7a57bf649b7e2481651
